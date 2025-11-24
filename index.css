@@ -1,0 +1,95 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #9face6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    #feedback {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-gap: 15px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      background-color: #f0f0f0;
+      border-radius: 12px;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.4s ease, background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      user-select: none;
+      position: relative;
+      perspective: 600px;
+    }
+
+    .card.flipped {
+      background-color: #333;
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+
+    .card.matched {
+      background-color: #4caf50;
+      color: #fff;
+      cursor: default;
+      transform: scale(1.05);
+    }
+
+    #btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #btn:hover {
+      background-color: #555;
+    }
+
+    .blooper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 12px;
+  animation: bounce 1s ease infinite;
+  z-index: 999;
+}
