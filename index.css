@@ -1,9 +1,11 @@
+/* Reset box model and remove default spacing for predictable layout */
 * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    /* Reset box model and remove default spacing for predictable layout */
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #74ebd5, #9face6);
@@ -15,18 +17,20 @@
       padding: 30px 20px;
     }
 
+    /* Main heading style */
     h2 {
       font-size: 2rem;
       margin-bottom: 20px;
       color: #333;
     }
 
+    /* Small feedback text (e.g., "Try again" or "Matched!") */
     #feedback {
       font-size: 1.2rem;
       margin-bottom: 15px;
       color: #222;
     }
-
+    /* Grid that holds the cards: 4 columns with gaps */
     .container {
       display: grid;
       grid-template-columns: repeat(4, 100px);
@@ -35,6 +39,10 @@
       margin-bottom: 20px;
     }
 
+    /* Card base styling:
+   - fixed size to align in grid
+   - rounded corners, shadow for depth
+   - perspective set for 3D flip effect (used with transform on children or the element) */
     .card {
       width: 100px;
       height: 100px;
@@ -49,15 +57,21 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       user-select: none;
       position: relative;
-      perspective: 600px;
+      perspective: 600px;/* enables 3D transforms like rotateY */
     }
 
+/* Flipped card appearance:
+   - dark background and white text
+   - rotateY used to visually flip the card (pair with child content if using inner faces) */
     .card.flipped {
       background-color: #333;
       color: #fff;
       transform: rotateY(180deg);
     }
 
+    /* Matched card appearance:
+   - green background to indicate success
+   - scale slightly and disable pointer cursor to show it's inactive */
     .card.matched {
       background-color: #4caf50;
       color: #fff;
@@ -65,6 +79,7 @@
       transform: scale(1.05);
     }
 
+    /* Button styling for restart/new game */
     #btn {
       padding: 10px 20px;
       font-size: 1rem;
@@ -80,6 +95,7 @@
       background-color: #555;
     }
 
+    /* Centered modal-like blooper message (e.g., "Oops!" or "Great!") */
     .blooper {
   position: fixed;
   top: 50%;
@@ -91,13 +107,16 @@
   padding: 20px 40px;
   border-radius: 12px;
   animation: bounce 1s ease infinite;
-  z-index: 999;
+  z-index: 999;/* make sure it sits above other elements */
 }
 
+/* Simple bounce animation used by .blooper */
 @keyframes bounce {
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
   50% { transform: translate(-50%, -50%) scale(1.1); }
 }
+
+/* Full-screen confetti container; pointer-events none so it doesn't block input */
 .confetti {
   position: fixed;
   top: 0;
@@ -109,6 +128,9 @@
   z-index: 999;
 }
 
+/* Individual confetti piece:
+   - uses CSS custom property --hue to vary color (set via JS when creating pieces)
+   - border-radius for round confetti; animation makes them fall */
 .confetti-piece {
   position: absolute;
   width: 10px;
@@ -118,6 +140,7 @@
   border-radius: 50%;
 }
 
+/* Fall animation: translate down and rotate, fade out at the end */
 @keyframes fall {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -129,6 +152,7 @@
   }
 }
 
+/* Footer sits at the bottom due to column layout and margin-top: auto used earlier */
 footer {
   margin-top: auto;
   padding: 10px 0;
