@@ -63,3 +63,28 @@ const gameBoard = document.getElementById("game-board");
           card2.classList.remove("flipped");
         }, 1000);
       }
+       flippedCards = [];
+
+      if (matchedCards.length === cards.length) {
+  feedback.textContent = "🎉 You matched all the cards!";
+
+  const confettiContainer = document.createElement("div");
+  confettiContainer.classList.add("confetti");
+  document.body.appendChild(confettiContainer);
+
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti-piece");
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.top = `${Math.random() * 100}%`;
+    confetti.style.setProperty('--hue', Math.floor(Math.random() * 360));
+    confettiContainer.appendChild(confetti);
+  }
+
+  setTimeout(() => {
+    confettiContainer.remove();
+   }, 3000);
+ }
+}
+restartBtn.addEventListener("click", createBoard);
+    createBoard();
