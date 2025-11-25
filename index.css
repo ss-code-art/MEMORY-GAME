@@ -158,4 +158,9 @@ footer {
   padding: 10px 0;
   font-size: 0.9rem;
   color: #555;
+  user-select: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; /* Firefox support */
+  -ms-user-select: none; 
+  pointer-events: none; 
 }
